@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -15,10 +13,12 @@ public class Coin : MonoBehaviour
             gameManager = gameManagerObj.GetComponent<GameManager>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
             gameManager.IncresePoints(1);
             Destroy(this.gameObject);
+        }
     }
 }
